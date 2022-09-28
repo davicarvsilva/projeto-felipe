@@ -12,7 +12,9 @@ Django 4
 ```
 git clone 
 cd projeto-felipe
+virtualenv -p python3.10 -v .venv
 source .venv/bin/activate
+pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
