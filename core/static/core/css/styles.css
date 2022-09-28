@@ -9,3 +9,14 @@ form{
 form *{
     margin-bottom: 10px;
 }
+
+.data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.data h3{
+    text-align: center;
+}

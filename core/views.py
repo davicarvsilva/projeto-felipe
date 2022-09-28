@@ -24,7 +24,14 @@ def home(request):
             
                 print(filename)
 
-            return render(request, 'core/index.html', {'form':form})
+            # objeto context receberá os dados que serão tratados e retornados pelo usuário
+            context = {
+                'campo1':campo1,
+                'campo2':campo2,
+                'arquivos':request.FILES.getlist('arquivos')
+            }
+
+            return render(request, 'core/index.html', {'form':form, 'context':context})
         else:
             print(form.errors)
 
