@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
+import pandas as pd
 
 from . import forms
 
@@ -22,7 +23,7 @@ def home(request):
                 filename = fs.save(f.name, f) # arquivo vindo do formulário
                 uploaded_file_url = fs.url(filename)
             
-                print(filename)
+                tratar_arquivo(filename)
 
             # objeto context receberá os dados que serão tratados e retornados pelo usuário
             context = {
@@ -37,3 +38,7 @@ def home(request):
 
     return render(request, 'core/index.html', 
 		{ 'form': form})
+
+def tratar_arquivo(file):
+    df = pd.read_excel(file)
+    print(df)
