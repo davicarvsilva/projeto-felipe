@@ -21,12 +21,18 @@
     <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
     <script src="{% static 'core/js/main.js' %}"></script>
     <title></title>
+
+    <style>
+        form{
+            margin:5vh 20vw;
+        }
+    </style>
 </head>
 <body>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
-        <button type="submit">Enviar</button>
+        <button type="submit" class="btn btn-success">Enviar</button>
     </form>
 
     {% if context %}
@@ -67,12 +73,6 @@
 
     <script>
         $(document).ready(function () {
-            $('.table').each(function() {
-                $(this).DataTable();
-            });
-
-            $('.dataTables_length').addClass('bs-select');
-
             $('.botao-exportar-tabela').click(function(){
                 id = 'tabela'
 

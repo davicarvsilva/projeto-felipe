@@ -7,4 +7,10 @@ class MainForm(forms.Form):
         widget=forms.ClearableFileInput(attrs={'class':'file-input', 'multiple': True})
     )
 
+    def __init__(self, *args, **kwargs):
+        super(MainForm, self).__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+
     
