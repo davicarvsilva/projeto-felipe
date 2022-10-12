@@ -22,7 +22,7 @@ def home(request):
                 filename = fs.save(f.name, f) # arquivo vindo do formulário
                 uploaded_file_url = fs.url(filename)
             
-                resultados.append(tratar_arquivo(filename))
+                resultados.append(tratar_arquivo(filename, campo1, campo2))
 
             # objeto context receberá os dados que serão tratados e retornados pelo usuário
             context = {
@@ -38,13 +38,11 @@ def home(request):
     return render(request, 'core/index.html', 
 		{ 'form': form})
 
-def tratar_arquivo(file):
+def tratar_arquivo(file, campo1, campo2):
     df = pd.read_excel(file, engine='openpyxl')
     df.fillna("-",inplace=True)
 
-    """
-        A partir daqui devem ser feitas as manipulações necessárias no dataframe
-    """
+    df.rename(columns={campo1.upper():campo2})
 
     resultado = {
         'headers':list(df.columns.values)[:10], # pega apenas as 10 primeiras colunas
